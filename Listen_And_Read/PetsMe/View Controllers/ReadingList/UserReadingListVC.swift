@@ -1,16 +1,20 @@
 //
-//  ReadingListVC.swift
+//  UserReadingListVC.swift
 //  PetsMe
 //
-//  Created by Aisha Ali on 12/29/21.
+//  Created by Aisha Ali on 1/2/22.
 //
 
 import UIKit
 
 
 
+
 private let reuseIdentifier3 = String(describing: BookListCell.self)
-class ReadingListVC: UITableViewController {
+
+class UserReadingListVC: UITableViewController {
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +35,39 @@ class ReadingListVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+      return readingList.count
+
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+      let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier3 , for: indexPath) as! BookListCell
 
-        return cell
+      cell.bookAuthorName.text = readingList[indexPath.row].authorName
+      cell.bookTitleLabel.text = readingList[indexPath.row].bookTitle
+
+    DispatchQueue.global().async{
+      let data = try? Data(contentsOf: URL(string: readingList[indexPath.row].coverBook)!)
+
+      if let data = data, let image = UIImage(data: data) {
+        DispatchQueue.main.async {
+          cell.bookCoverImage?.image = image
+          cell.bookCoverImage?.contentMode = .scaleToFill
+
+        }
+      }
     }
-    */
+
+
+    cell.bookGenreLabel.text = readingList[indexPath.row].bookGenere
+
+
+    
+
+      return cell
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+var readingList = [AddToReadingList] ()
 
 class BookDetailsVC: UIViewController {
   
@@ -16,8 +17,7 @@ class BookDetailsVC: UIViewController {
   
   @IBOutlet weak var textField: UITextView!
   
-  var bookInfo : Books!
-  
+
   var bookTitle:String = ""
   var image:String = ""
   var author:String = ""
@@ -62,6 +62,22 @@ class BookDetailsVC: UIViewController {
   
   @IBAction func button_Pressed(_ sender: UIButton) {
     
+    let new = AddToReadingList(coverBook: image, authorName: author, bookTitle: bookTitle, bookGenere: genre)
+    readingList.append(new)
+
+//    for a in readingList {
+//      if new.coverBook == a.coverBook{
+//        print("++++++++ can not add items\n\n\n\n\\n")
+//
+//      } else {
+//
+//      }
+//
+//    }
+
+    
+    print("*****_____\(new)\n\n\n\n\n\n\n\n\n\n\n**********************\n\n\n\n")
+    
     let vc = self.storyboard?.instantiateViewController(withIdentifier: "DisplayBookContentVC") as! DisplayBookContentVC
     
     
@@ -75,15 +91,15 @@ class BookDetailsVC: UIViewController {
           vc.bookContent.text = textFromURL
         }
       }
-    
+    vc.hidesBottomBarWhenPushed = true
     vc.modalPresentationStyle = .fullScreen
+    
     self.navigationController?.pushViewController(vc, animated: true)
 
 //    present(vc,animated: false, completion: nil)
     
     
   }
-  
-
-  
 }
+
+

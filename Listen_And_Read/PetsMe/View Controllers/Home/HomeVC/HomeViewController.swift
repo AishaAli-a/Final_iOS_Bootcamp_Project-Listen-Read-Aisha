@@ -144,7 +144,7 @@ extension Home: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
       backItem.title = category
       //  backItem.tintColor = .red
       
-      UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Montserrat-Bold", size: 20) ?? "Helvetica Neue "], for: .normal) // your textattributes here
+//      UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Montserrat-Bold", size: 20) ?? "Helvetica Neue "], for: .normal) // your textattributes here
       navigationItem.backBarButtonItem = backItem
       let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "BooksListTableViewController") as! BooksListTableViewController
       secondViewController.category =  category
