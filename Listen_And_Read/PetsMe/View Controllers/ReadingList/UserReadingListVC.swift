@@ -10,20 +10,26 @@ import UIKit
 
 
 
-private let reuseIdentifier3 = String(describing: BookListCell.self)
+private let reuseIdentifier4 = String(describing: BookListCell.self)
+var count = 0 
 
 class UserReadingListVC: UITableViewController {
 
-
+  var currentBook: String = ""
+  var currentGenre: String = ""
+  var currentAuthor: String = ""
+  var currentSummary: String = ""
+  var currentImage: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
       self.view.backgroundColor = .cmWhite
       
-      let nib2 = UINib(nibName: reuseIdentifier3, bundle: nil)
+      let nib2 = UINib(nibName: reuseIdentifier4, bundle: nil)
       
-      tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier3)
+      tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier4)
+      
     }
 
     // MARK: - Table view data source
@@ -42,7 +48,7 @@ class UserReadingListVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-      let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier3 , for: indexPath) as! BookListCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier4 , for: indexPath) as! BookListCell
 
       cell.bookAuthorName.text = readingList[indexPath.row].authorName
       cell.bookTitleLabel.text = readingList[indexPath.row].bookTitle
@@ -58,60 +64,41 @@ class UserReadingListVC: UITableViewController {
         }
       }
     }
-
-
     cell.bookGenreLabel.text = readingList[indexPath.row].bookGenere
-
-
-    
-
       return cell
     }
+  
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+
+//    currentSummary = booksData[indexPath.row].txtLink
+
+    currentBook = readingList[indexPath.row].bookTitle
+    currentSummary = readingList[indexPath.row].bookContent
+    currentImage = readingList[indexPath.row].coverBook
+    currentAuthor = readingList[indexPath.row].authorName
+    currentGenre = readingList[indexPath.row].bookGenere
+    performSegue(withIdentifier: "showContent", sender: nil)
+    
+  }
+  
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let destinationVC = segue.destination as? BookDetailsVC {
+      destinationVC.bookTitle = currentBook
+      destinationVC.genre = currentGenre
+      destinationVC.cover = currentImage
+      destinationVC.author = currentAuthor
+      destinationVC.summary = currentSummary
+      
+
+
+    }
+  }
+  
+}
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+    
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}

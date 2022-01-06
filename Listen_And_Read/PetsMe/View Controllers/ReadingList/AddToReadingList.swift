@@ -15,5 +15,6 @@ struct AddToReadingList:Hashable {
   let authorName : String
   let bookTitle : String
   let bookGenere : String
+  let bookContent : String
 }
 

@@ -15,7 +15,6 @@ class SignUpViewController:UIViewController{
   let style = Style()
   
   @IBOutlet weak var register_Button: UIButton!
-  
   @IBOutlet weak var name_View: UIView!
   @IBOutlet weak var password_View: UIView!
   @IBOutlet weak var confirmPassword_View: UIView!
@@ -36,30 +35,30 @@ class SignUpViewController:UIViewController{
   @IBAction func button_Pressed(_ sender: UIButton) {
     print(#function)
     
-//    if sender.tag == 0 {
-//
-//      vc = self.storyboard?.instantiateViewController(withIdentifier: "SignIn") as! SignIn
-//      vc.modalPresentationStyle = .fullScreen
-//      present(vc,animated: false, completion: nil)
-//    }else
-    if sender.tag == 1 {
-//
+        if sender.tag == 0 {
+    
+          vc = self.storyboard?.instantiateViewController(withIdentifier: "LogInViewController") as! LogInViewController
+          vc.modalPresentationStyle = .fullScreen
+          present(vc,animated: false, completion: nil)
+          
+        }else if sender.tag == 1 {
+      //
       vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as! MainTabBar
       vc.modalPresentationStyle = .fullScreen
       present(vc,animated: false, completion: nil)
-
+      
     } else if sender.tag == 2 {
-
+      
       vc = self.storyboard?.instantiateViewController(withIdentifier: "TermsAndServices") as! TermsAndServices
-//      vc.modalPresentationStyle = .fullScren
+      //      vc.modalPresentationStyle = .fullScren
       present(vc,animated: false, completion: nil)
-//
+      //
     }
   }
   
-
-
-
+  
+  
+  
 }
 //override func viewDidLoad() {
 //  super.viewDidLoad()

@@ -110,10 +110,6 @@ class BooksListTableViewController: UITableViewController, BookMangerDelegate {
     
     print("~~ Formats Image: \(String(describing: booksData[indexPath.row].format))\n\n\n\n")
 
-//    print("~~ Formats Image: \(String(describing: booksData[indexPath.row].imageLink))\n\n\n\n")
-
-    
-    
     return cell
   }
   
@@ -199,7 +195,7 @@ extension BooksListTableViewController : UISearchBarDelegate {
     if let destinationVC = segue.destination as? BookDetailsVC {
       destinationVC.bookTitle = currentBook
       destinationVC.genre = category!
-      destinationVC.image = currentImage
+      destinationVC.cover = currentImage
       destinationVC.author = currentAuthor
       destinationVC.summary = currentSummary
       
