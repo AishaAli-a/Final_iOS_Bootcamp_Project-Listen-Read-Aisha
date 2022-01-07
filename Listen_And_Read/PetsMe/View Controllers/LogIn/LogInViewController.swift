@@ -6,8 +6,8 @@
 //
 
 import UIKit
-//import Firebase
-//import FirebaseAuth
+import Firebase
+import FirebaseAuth
 
 class LogInViewController: UIViewController {
   
@@ -34,33 +34,35 @@ class LogInViewController: UIViewController {
     Utilities.styleTextField(passwordTextField)
     Utilities.styleTextField(emailTextField)
     Utilities.styleButton(logInButton)
-    
-    
-    
-    
-    
   }
-//  
-//  @IBAction func logInTapped(_ sender: UIButton) {
-//    let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//    let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//    
-//    // Signing in the user
-//    Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-//      
-//      if error != nil {
-//        // Couldn't sign in
-//        self.errorLabel.text = error!.localizedDescription
-//        self.errorLabel.alpha = 1
-//      }
-//      else {
-//        
-//        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
-//        
-//        self.view.window?.rootViewController = homeViewController
-//        self.view.window?.makeKeyAndVisible()
-//      }
-//    }
-//  }
-//}
+  
+  @IBAction func logInTapped(_ sender: UIButton) {
+    
+    
+    let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    
+    // Signing in the user
+    Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+      
+      if error != nil {
+        // Couldn't sign in
+        self.errorLabel.text = error!.localizedDescription
+        self.errorLabel.alpha = 1
+      }else {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as! MainTabBar
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc,animated: false, completion: nil)
+      }
+    }
+  }
 }
+
+
+
+
+
+
+
+

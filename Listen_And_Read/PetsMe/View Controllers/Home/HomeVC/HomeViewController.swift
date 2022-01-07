@@ -5,36 +5,45 @@
 //  Created by Aisha Ali on 11/27/21.
 //
 
-import Foundation
+import Firebase
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
+//import FirebaseCore
 //LabelCell
 private let reuseIdentifier2 = String(describing: LabelCell.self)
-private let reuseIdentifier3 = String(describing: BookListCell.self)
+
+
 class Home: UIViewController{
   
+  let db = Firestore.firestore()
+  let id = Auth.auth().currentUser!.uid
+  let email = Auth.auth().currentUser!.email
   
   var currentBook: String = ""
   var currentGenre: String = ""
   var currentAuthor: String = ""
   var currentSummary: String = ""
   var currentImage: String = ""
+  var username: String = ""
   
   
   let bookOfTheDay = [
     AddToReadingList(coverBook: "http://www.gutenberg.org/cache/epub/74/pg74.cover.medium.jpg", authorName: "Mark Twain", bookTitle: "The Adventures of Tom Sawyer", bookGenere: "Fiction", bookContent: "http://www.gutenberg.org/files/74/74-0.txt"),
-
+    
     AddToReadingList(coverBook: "http://www.gutenberg.org/cache/epub/76/pg76.cover.medium.jpg", authorName: "Mark Twain", bookTitle: "Adventures of Huckleberry Finn", bookGenere: "Fiction", bookContent: "http://www.gutenberg.org/files/76/76-0.txt"),
-
+    
     AddToReadingList(coverBook: "http://www.gutenberg.org/cache/epub/421/pg421.cover.medium.jpg", authorName: "Robert Louis Stevenson", bookTitle: "Kidnapped", bookGenere: "Fiction", bookContent: "http://www.gutenberg.org/files/421/421-0.txt"),
-
+    
     AddToReadingList(coverBook: "http://www.gutenberg.org/cache/epub/1480/pg1480.cover.medium.jpg", authorName: "Thomas Hughes", bookTitle: "Tom Brown\'s School Days", bookGenere: "Fiction", bookContent: "http://www.gutenberg.org/files/1480/1480-0.txt")
-
+    
   ]
   
   
   var categoryIndex = [0,1,2,3,4,5,6,7,8,9]
   var category : String?
-
+  
+  
   
   @IBOutlet weak var uiView: UIView!
   @IBOutlet weak var continuousReading: UIStackView!
@@ -43,8 +52,8 @@ class Home: UIViewController{
   @IBOutlet weak var numberOFBooks: UILabel!
   @IBOutlet weak var categoriesCollection: UICollectionView!
   @IBOutlet weak var bookOfTheDayCollection: UICollectionView!
+  @IBOutlet weak var userName_Label: UILabel!
   
-
   
   let bookByCtegory = [
     ImageDetails(myImages: "Novel", name: "Fiction"),
@@ -66,28 +75,47 @@ class Home: UIViewController{
     categoriesCollection.register(nib2, forCellWithReuseIdentifier: reuseIdentifier2)
     configureSize(numberOfHorizantalCells: 4, marginsBetweenCells: 20)
     continuousReading.isHidden = true
-  
+    //    userName_Label.text = username
+    
+    let user = Auth.auth().currentUser
+    print(user?.uid as Any)
+    if let currentUser = user {
+      db.collection("users").document(currentUser.uid).getDocument { doc , err in
+        if err != nil {
+          print(err!)
+        }
+        else{
+          let data = doc!.data()!
+          self.username = data["name"] as! String
+          print("\n\n* * * DATA : \(data)")
+          self.userName_Label.text = self.username
+        }
+      }
+    }
+    
   }
   
+  
   override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = false
     print("\n\n***********\(count)\n\n")
-
+    
     if readingList.count != 0{
       continuousReading.isHidden = false
-      numberOFBooks.text = "\(readingList.count) Books in your list "
+      numberOFBooks.text = "\(readingList.count) Books in your reading list "
     }
-
+    
     UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
-         self.bookImage.image = UIImage(named: "History")
-        self.bookImage.frame.origin.y -= 25
-
-     })
+      self.bookImage.image = UIImage(named: "History")
+      self.bookImage.frame.origin.y -= 25
+      
+    })
     
   }
   
 }
-  
+
 
 
 //MARK: - Home Extension
@@ -111,7 +139,7 @@ extension Home: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     if collectionView == self.bookOfTheDayCollection {
       
       let cellA = bookOfTheDayCollection.dequeueReusableCell(withReuseIdentifier: "BookOfTheDayCell", for: indexPath) as! BookOfTheDayCell
-
+      
       cellA.bookOfTheDayLabel.text = "\(bookOfTheDay[indexPath.row].bookTitle)"
       
       cellA.bookOfTheDay_View.layer.cornerRadius = 20
@@ -185,7 +213,7 @@ extension Home: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
       
     }
   }
-
+  
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
@@ -198,8 +226,8 @@ extension Home: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
       
     }
   }
-    
-    
+  
+  
   
   
   

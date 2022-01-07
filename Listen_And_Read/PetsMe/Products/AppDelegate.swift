@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+  
 
 
 
@@ -16,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     UITabBar.appearance().tintColor = .cmOrange3
+    FirebaseApp.configure()
 
 
 
