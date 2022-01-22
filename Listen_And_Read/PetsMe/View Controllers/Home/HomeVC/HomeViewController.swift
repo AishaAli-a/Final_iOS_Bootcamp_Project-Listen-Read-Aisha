@@ -15,9 +15,7 @@ class Home: UIViewController{
 
   let db = Firestore.firestore()
   let id = Auth.auth().currentUser!.uid
-  
-  var bookOfTheSay : [ReadingList] = []
-  
+    
   var currentBook: String = ""
   var currentGenre: String = ""
   var currentAuthor: String = ""
@@ -43,31 +41,30 @@ class Home: UIViewController{
     let nib2 = UINib(nibName: reuseIdentifier2, bundle: nil)
     categoriesCollection.register(nib2, forCellWithReuseIdentifier: reuseIdentifier2)
     configureSize(numberOfHorizantalCells: 4, marginsBetweenCells: 20)
-    continuousReading.isHidden = true
   }
   
   
-//  func readUserReadingList(){
-//
-//    let db = Firestore.firestore()
-//    db.collection("users").document(id).collection("ReadingList").getDocuments{ Snapshot, error in
-//      if error == nil {
-//        books.removeAll()
-//        guard let data = Snapshot?.documents else {return}
-//        for bookInfo in data {
-//
-//          books.append(ReadingList(coverBook: bookInfo.get("coverBook") as! String,
-//                                   authorName: bookInfo.get("authorName") as! String,
-//                                   bookTitle: bookInfo.get("bookTitle") as! String,
-//                                   bookGenere: bookInfo.get("bookGenere") as! String,
-//                                   bookContent: bookInfo.get("bookContent") as! String,
-//                                   bookId: bookInfo.get("bookId") as! String
-//                                  ))
-//          print(bookInfo.get("authorName")!)
-//        }
-//      }
-//    }
-//  }
+  func readUserReadingList(){
+
+    let db = Firestore.firestore()
+    db.collection("users").document(id).collection("ReadingList").getDocuments{ Snapshot, error in
+      if error == nil {
+        books.removeAll()
+        guard let data = Snapshot?.documents else {return}
+        for bookInfo in data {
+
+          books.append(ReadingList(coverBook: bookInfo.get("coverBook") as! String,
+                                   authorName: bookInfo.get("authorName") as! String,
+                                   bookTitle: bookInfo.get("bookTitle") as! String,
+                                   bookGenere: bookInfo.get("bookGenere") as! String,
+                                   bookContent: bookInfo.get("bookContent") as! String,
+                                   bookId: bookInfo.get("bookId") as! String
+                                  ))
+          print(bookInfo.get("authorName")!)
+        }
+      }
+    }
+  }
   
   
   func readUserInfo()
@@ -93,20 +90,20 @@ class Home: UIViewController{
     
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = false
-    
+
     readUserInfo()
-//    readUserReadingList()
     bookAnimation()
+    readUserReadingList()
     
   }
 
   
   func bookAnimation(){
     
-    if myReadingList.count != 0 {
+    if books.count != 0 {
       continuousReading.isHidden = false
-      numberOFBooks.text = "\(myReadingList.count) Books in your reading list "
-      randomimage = myReadingList.randomElement()?.coverBook
+      numberOFBooks.text = "\(books.count) Books in your reading list "
+      randomimage = books.randomElement()?.coverBook
       print("\n\n* * * Random : \(randomimage) * * * * * * * *\n\n")
       DispatchQueue.main.async{
         let data = try? Data(contentsOf: URL(string: self.randomimage!)!)
@@ -119,6 +116,9 @@ class Home: UIViewController{
           })
         }
       }
+    } else{
+          continuousReading.isHidden = true
+
     }
   }
 }

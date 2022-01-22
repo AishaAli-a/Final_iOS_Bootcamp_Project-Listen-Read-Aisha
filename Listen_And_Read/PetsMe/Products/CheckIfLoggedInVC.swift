@@ -16,7 +16,8 @@ class CheckIfLoggedInVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    readReadingList()
+
+    
 
   }
   
@@ -32,7 +33,7 @@ class CheckIfLoggedInVC: UIViewController {
       self.present(vc, animated: true, completion: nil)
       print("User is not logged In")
     }else{
-      readReadingList()
+
       let vc = storboard.instantiateViewController(withIdentifier: "MainTabBar")  as! MainTabBar
       
       vc.modalPresentationStyle = .fullScreen
@@ -42,31 +43,43 @@ class CheckIfLoggedInVC: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    UserReadingListVC().tableView.reloadData()
+    print("* * * * CheckIfLoggedInVC viewWillAppear * * *  ")
+    print("Number of Books: \(books.count)")
 
-    readReadingList()
+  }
+  
+  
+  override func loadView() {
+    super.loadView()
+//    readReadingList()
+//    print("* * * * CheckIfLoggedInVC loadView * * *  ")
+   let count = UserReadingListVC().myReadingList.count
+    print("* * * * number of books in reading list: \(count) * * *  ")
+
+   
+
   }
 
-  func readReadingList(){
-    let db = Firestore.firestore()
-    db.collection("users").document(idUsers!).collection("ReadingList").getDocuments{ Snapshot, error in
-      if error == nil {
-        books.removeAll()
-        guard let data = Snapshot?.documents else {return}
-        for bookInfo in data {
-          
-          myReadingList.append(ReadingList(coverBook: bookInfo.get("coverBook") as! String,
-                                        authorName: bookInfo.get("authorName") as! String,
-                                        bookTitle: bookInfo.get("bookTitle") as! String,
-                                        bookGenere: bookInfo.get("bookGenere") as! String,
-                                        bookContent: bookInfo.get("bookContent") as! String,
-                                        bookId: bookInfo.get("bookId") as! String
-                                       ))
-          print("Number of Books: \(books.count)")
-        }
-      }
-    }
-  }
+//  func readReadingList(){
+//    let db = Firestore.firestore()
+//    db.collection("users").document(idUsers!).collection("ReadingList").getDocuments{ Snapshot, error in
+//      if error == nil {
+//        books.removeAll()
+//        guard let data = Snapshot?.documents else {return}
+//        for bookInfo in data {
+//
+//          books.append(ReadingList(coverBook: bookInfo.get("coverBook") as! String,
+//                                        authorName: bookInfo.get("authorName") as! String,
+//                                        bookTitle: bookInfo.get("bookTitle") as! String,
+//                                        bookGenere: bookInfo.get("bookGenere") as! String,
+//                                        bookContent: bookInfo.get("bookContent") as! String,
+//                                        bookId: bookInfo.get("bookId") as! String
+//                                       ))
+//          print("Number of Books: \(books.count)")
+//        }
+//      }
+//    }
+//  }
 }
 
 
