@@ -39,7 +39,7 @@ class MainVC: UIViewController {
   
   
   @IBAction func button_pressed(_ sender: UIButton) {
-    print(#function)
+//    print(#function)
     if sender.tag == 0 {
       
       vc = self.storyboard?.instantiateViewController(withIdentifier: "Register") as! SignUpViewController
@@ -56,6 +56,14 @@ class MainVC: UIViewController {
     
     
   }
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

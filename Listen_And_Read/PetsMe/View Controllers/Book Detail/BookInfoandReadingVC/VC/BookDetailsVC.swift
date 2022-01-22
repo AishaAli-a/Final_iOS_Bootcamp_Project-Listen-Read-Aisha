@@ -6,9 +6,13 @@
 //
 
 import UIKit
-var readingList = [AddToReadingList] ()
+import Firebase
+
+var readingList = [ReadingList] ()
 
 class BookDetailsVC: UIViewController {
+  
+  var arrayBooks: [ReadingList] = []
   
   @IBOutlet weak var bookCover_ImageView: UIImageView!
   @IBOutlet weak var bookTitle_Label: UILabel!
@@ -16,16 +20,20 @@ class BookDetailsVC: UIViewController {
   @IBOutlet weak var bookGenre_Label: UILabel!
   
   
+
+  
+  
+  
   var bookTitle:String = ""
   var cover:String = ""
   var author:String = ""
   var genre:String = ""
-  var summary:String = ""
+  var bookContent:String = ""
+  let db = Firestore.firestore()
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    bookCover_ImageView.layer.cornerRadius = 20
   }
   
   
@@ -35,10 +43,9 @@ class BookDetailsVC: UIViewController {
     bookGenre_Label.text = genre
     bookAuthor_Label.text = author
     
-    print("~~ \(self.summary)")
+    print("~~ \(self.bookContent)")
     
     //  MARK:  - Edit File get text and image from url
-    
 
     if self.cover != "NA"{
       DispatchQueue.global().async{
@@ -46,43 +53,38 @@ class BookDetailsVC: UIViewController {
         if let data = data, let image = UIImage(data: data) {
           DispatchQueue.main.async {
             self.bookCover_ImageView?.image = image
+            self.bookCover_ImageView.layer.cornerRadius = 20
             self.bookCover_ImageView?.contentMode = .scaleToFill
 
           }
         }
       }
+    } else {
+      print("* * * PHOTO NOT FOUND * * * ")
     }
   }
   
   
-  
-  
   @IBAction func button_Pressed(_ sender: UIButton) {
     
-    let new = AddToReadingList(coverBook: cover, authorName: author, bookTitle: bookTitle, bookGenere: genre, bookContent: summary)
-    readingList.append(new)
-    count += 1
-    
-    
-    print("*****_____\(new)\n\n\(count)\n\n\n\n\n\n\n\n\n**********************\n\n\n\n")
     
     let vc = self.storyboard?.instantiateViewController(withIdentifier: "DisplayBookContentVC") as! DisplayBookContentVC
     
-    if self.summary != "NA"{
+    if self.bookContent != "NA"{
+      addBookToUserReadingList()
+      
       DispatchQueue.main.async {
-        let textURL=URL(string: self.summary)!
+        let textURL=URL(string: self.bookContent)!
         let textData=try? Data(contentsOf: textURL)
-        let textFromURL = String(data: textData!, encoding: .utf8)!
-        //          vc.bookContent.text = ""
-        vc.bookContent.text = textFromURL
+        let textFromURL = String(data: textData!, encoding: .utf8)
+        vc.bookContent?.text = textFromURL
       }
+      
     } else {
       
       resultAlert()
+      
     }
-    
-    
-    
     
     vc.hidesBottomBarWhenPushed = true
     vc.modalPresentationStyle = .fullScreen
@@ -90,19 +92,27 @@ class BookDetailsVC: UIViewController {
     
   }
   
+  //  MARK:  - Store current book to RedingList collection in firebase
   
-  func resultAlert(){
+  func addBookToUserReadingList(){
     
-    
-    let resetAlert = UIAlertController(title: "Warning"
-                                       , message: "Sorry this book is not available"
-                                       , preferredStyle: .alert)
-    
-    resetAlert.addAction(UIAlertAction(title: "Okay",
-                                       style: .default
-                                       ,handler: nil ))
-    present(resetAlert, animated: true)
+    let db = Firestore.firestore()
+    let idUsers = Auth.auth().currentUser?.uid
+    let idBook = Int.random(in: 1000000000...9999999999)
+    db.collection("users").document(idUsers!).collection("ReadingList").getDocuments { [self] Snapshot, error in
+      
+      let myBooks = ReadingList(coverBook: cover,
+                                authorName: author,
+                                bookTitle: bookTitle,
+                                bookGenere: genre,
+                                bookContent: bookContent,
+                                bookId: "\(idBook)")
+      
+      db.collection("users").document(idUsers!).collection("ReadingList").document(myBooks.bookTitle).setData(myBooks.getBookDetails())
+    }
   }
 }
+
+
 
 

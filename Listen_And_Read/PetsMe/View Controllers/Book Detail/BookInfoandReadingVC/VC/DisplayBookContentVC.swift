@@ -114,7 +114,7 @@ class DisplayBookContentVC: UIViewController {
           synth.pauseSpeaking(at: AVSpeechBoundary.immediate)
         }
       }
-      print("****************\n**************\n\n\(gender)\n\n\n\n\n\n\n+++++++_________\n\n\n")
+//      print("****************\n**************\n\n\(gender)\n\n\n\n\n\n\n+++++++_________\n\n\n")
       
     } else if sender.tag == 2 {
     }
@@ -135,7 +135,7 @@ class DisplayBookContentVC: UIViewController {
       if currentRange.length > 0 {
         
         synth.speak(buildUtterance(for: AVSpeechUtteranceDefaultSpeechRate, for: sender.value , with: bookContent.text))
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n$$$$$$$$$$$$$ \(sender.value)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n########################\n\n\n\n\n\n")
+//        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n$$$$$$$$$$$$$ \(sender.value)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n########################\n\n\n\n\n\n")
       }
     }
   }

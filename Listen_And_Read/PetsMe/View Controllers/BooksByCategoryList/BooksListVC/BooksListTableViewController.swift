@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
-private let reuseIdentifier2 = String(describing: BookListCell.self)
 
 class BooksListTableViewController: UITableViewController, BookMangerDelegate {
+  var myReadingList: [ReadingList] = []
+  private let reuseIdentifier2 = String(describing: BookListCell.self)
+
   
   var vSpinner : UIView?
   var category: String?
@@ -49,6 +52,11 @@ class BooksListTableViewController: UITableViewController, BookMangerDelegate {
     booksManager.fetchBookByCategory(category: category!)
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    readReadingList()
+  }
+  
   
   //MARK: - Load More books
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -75,11 +83,6 @@ class BooksListTableViewController: UITableViewController, BookMangerDelegate {
   
   // MARK: - Table view data source
   
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
-    return 1
-  }
-  
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
     return booksData.count
@@ -103,16 +106,11 @@ class BooksListTableViewController: UITableViewController, BookMangerDelegate {
       }
     }
     
-    
     cell.bookGenreLabel.text = category
-    
-
-    
     print("~~ Formats Image: \(String(describing: booksData[indexPath.row].format))\n\n\n\n")
 
     return cell
   }
-  
   
   // MARK: - Books Delegte - show books depend on the category or search
   
@@ -167,7 +165,6 @@ extension BooksListTableViewController : UISearchBarDelegate {
     self.searchBar.endEditing(true)
     self.searchBar.layer.borderColor = UIColor.clear.cgColor
     self.showSpinner(onView: self.view)
-    
   }
   
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -179,15 +176,30 @@ extension BooksListTableViewController : UISearchBarDelegate {
   
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-
-//    currentSummary = booksData[indexPath.row].txtLink
+    readReadingList()
 
     currentBook = booksData[indexPath.row].title
     currentSummary = booksData[indexPath.row].format
     currentImage = booksData[indexPath.row].imageLink
     currentAuthor = booksData[indexPath.row].authorname
     performSegue(withIdentifier: "show", sender: nil)
+    //
+    
+    let db = Firestore.firestore()
+
+    let idBook = Int.random(in: 1000000000...9999999999)
+    db.collection("ReadingList").getDocuments { [self] Snapshot, error in
+      
+      let myBooks = ReadingList(coverBook: currentImage,
+                                authorName: currentAuthor,
+                                bookTitle: currentBook,
+                                bookGenere: category!,
+                                bookContent: currentSummary,
+                                bookId: "\(idBook)")
+      
+      
+      db.collection("ReadingList").document("\(currentBook)").setData(myBooks.getBookDetails())
+    }
   }
   
   
@@ -197,8 +209,28 @@ extension BooksListTableViewController : UISearchBarDelegate {
       destinationVC.genre = category!
       destinationVC.cover = currentImage
       destinationVC.author = currentAuthor
-      destinationVC.summary = currentSummary
-      
+      destinationVC.bookContent = currentSummary
+    }
+  }
+  
+  
+  func readReadingList(){
+    let db = Firestore.firestore()
+    db.collection("ReadingList").getDocuments { Snapshot, error in
+      if error == nil {
+        guard let data = Snapshot?.documents else {return}
+        for bookInfo in data {
+          self.myReadingList.append(ReadingList(coverBook: bookInfo.get("coverBook") as! String,
+                                         authorName: bookInfo.get("authorName") as! String,
+                                         bookTitle: bookInfo.get("bookTitle") as! String,
+                                         bookGenere: bookInfo.get("bookGenere") as! String,
+                                         bookContent: bookInfo.get("bookContent") as! String,
+                                         bookId: bookInfo.get("bookId") as! String
+                                        ))
+          print("\n\n* * * \(bookInfo.get("authorName")!) * * *")
+        }
+        self.tableView.reloadData()
+      }
     }
   }
 }

@@ -36,12 +36,7 @@ class Utilities {
   
   
   static func styleButton (_ button:UIButton){
-    
-//    button.layer.borderWidth = 2
-//    button.layer.borderColor = UIColor.gray.cgColor
-    button.tintColor = UIColor.white
-    button.layer.cornerRadius = 15
-    button.backgroundColor = .cmOrange3
+    button.layer.cornerRadius = 30
     
   }
   

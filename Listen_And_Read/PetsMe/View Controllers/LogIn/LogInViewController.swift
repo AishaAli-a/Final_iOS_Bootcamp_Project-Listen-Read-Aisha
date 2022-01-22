@@ -22,10 +22,7 @@ class LogInViewController: UIViewController {
     super.viewDidLoad()
     
     setUpLayOut()
-    
-    
-    // Do any additional setup after loading the view.
-  }
+    }
   
   
   

@@ -20,25 +20,27 @@
 		CA52DC012773B469006AFBAD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52DC002773B469006AFBAD /* HomeViewController.swift */; };
 		CA52DC062773B4C3006AFBAD /* BookOfTheDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52DC052773B4C3006AFBAD /* BookOfTheDayCell.swift */; };
 		CA52DC0D2773B5E3006AFBAD /* ImageDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52DC0C2773B5E3006AFBAD /* ImageDetails.swift */; };
-		CA6D76842781DC2200DA1187 /* AddToReadingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D76832781DC2200DA1187 /* AddToReadingList.swift */; };
+		CA6D76842781DC2200DA1187 /* ReadingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D76832781DC2200DA1187 /* ReadingList.swift */; };
 		CA6D76862781E48F00DA1187 /* UserReadingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D76852781E48F00DA1187 /* UserReadingListVC.swift */; };
 		CA6D76882782D0F800DA1187 /* PrefrencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D76872782D0F800DA1187 /* PrefrencesVC.swift */; };
 		CA6DB33D2786C06600E65203 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA6DB33C2786C06600E65203 /* GoogleService-Info.plist */; };
-		CA6DB3402786C22500E65203 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CA6DB33F2786C22500E65203 /* FirebaseAuth */; };
-		CA6DB3422786C22500E65203 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CA6DB3412786C22500E65203 /* FirebaseFirestore */; };
-		CA6DB3452787080D00E65203 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CA6DB3442787080D00E65203 /* FirebaseStorage */; };
 		CA90D4F0277B193100544D83 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA90D4EF277B193100544D83 /* EndPoints.swift */; };
+		CA9E95742798892300418D51 /* Dummy Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9E95732798892300418D51 /* Dummy Data.swift */; };
 		CAAAEF8A277886A400B9ADDE /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAEF89277886A400B9ADDE /* Books.swift */; };
 		CAAAEF8C277886AB00B9ADDE /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAEF8B277886AB00B9ADDE /* BookManager.swift */; };
 		CAAAEF8E277886B200B9ADDE /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAEF8D277886B200B9ADDE /* BookModel.swift */; };
 		CAAAEF90277886B600B9ADDE /* BookMangerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAEF8F277886B600B9ADDE /* BookMangerDelegate.swift */; };
+		CAC5DEF9279ACB5000B47B17 /* Home+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC5DEF8279ACB5000B47B17 /* Home+Extension.swift */; };
+		CACDA75D279B7AED004DDA40 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CACDA75C279B7AED004DDA40 /* FirebaseAuth */; };
+		CACDA75F279B7AED004DDA40 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CACDA75E279B7AED004DDA40 /* FirebaseFirestore */; };
+		CACDA761279B7AED004DDA40 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CACDA760279B7AED004DDA40 /* FirebaseStorage */; };
 		CAD1EA3627773F8500820426 /* BookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD1EA3427773F8500820426 /* BookListCell.swift */; };
 		CAD1EA3727773F8500820426 /* BookListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD1EA3527773F8500820426 /* BookListCell.xib */; };
 		CAD1EA3E2777442500820426 /* BooksListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD1EA3D2777442500820426 /* BooksListTableViewController.swift */; };
 		CAD3601F2785B83D00852176 /* Voice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3601E2785B83D00852176 /* Voice.swift */; };
 		CAE17F9B276E2F3300F3BBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE17F9A276E2F3300F3BBF8 /* AppDelegate.swift */; };
 		CAE17F9D276E2F3300F3BBF8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE17F9C276E2F3300F3BBF8 /* SceneDelegate.swift */; };
-		CAE17F9F276E2F3300F3BBF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE17F9E276E2F3300F3BBF8 /* ViewController.swift */; };
+		CAE17F9F276E2F3300F3BBF8 /* CheckIfLoggedInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE17F9E276E2F3300F3BBF8 /* CheckIfLoggedInVC.swift */; };
 		CAE17FA2276E2F3300F3BBF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAE17FA0276E2F3300F3BBF8 /* Main.storyboard */; };
 		CAE17FA4276E2F3400F3BBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE17FA3276E2F3400F3BBF8 /* Assets.xcassets */; };
 		CAE17FA7276E2F3400F3BBF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAE17FA5276E2F3400F3BBF8 /* LaunchScreen.storyboard */; };
@@ -65,15 +67,17 @@
 		CA52DC002773B469006AFBAD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CA52DC052773B4C3006AFBAD /* BookOfTheDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookOfTheDayCell.swift; sourceTree = "<group>"; };
 		CA52DC0C2773B5E3006AFBAD /* ImageDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetails.swift; sourceTree = "<group>"; };
-		CA6D76832781DC2200DA1187 /* AddToReadingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToReadingList.swift; sourceTree = "<group>"; };
+		CA6D76832781DC2200DA1187 /* ReadingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingList.swift; sourceTree = "<group>"; };
 		CA6D76852781E48F00DA1187 /* UserReadingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReadingListVC.swift; sourceTree = "<group>"; };
 		CA6D76872782D0F800DA1187 /* PrefrencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefrencesVC.swift; sourceTree = "<group>"; };
 		CA6DB33C2786C06600E65203 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA90D4EF277B193100544D83 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		CA9E95732798892300418D51 /* Dummy Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dummy Data.swift"; sourceTree = "<group>"; };
 		CAAAEF89277886A400B9ADDE /* Books.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		CAAAEF8B277886AB00B9ADDE /* BookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		CAAAEF8D277886B200B9ADDE /* BookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		CAAAEF8F277886B600B9ADDE /* BookMangerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookMangerDelegate.swift; sourceTree = "<group>"; };
+		CAC5DEF8279ACB5000B47B17 /* Home+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+Extension.swift"; sourceTree = "<group>"; };
 		CAD1EA3427773F8500820426 /* BookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCell.swift; sourceTree = "<group>"; };
 		CAD1EA3527773F8500820426 /* BookListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookListCell.xib; sourceTree = "<group>"; };
 		CAD1EA3D2777442500820426 /* BooksListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListTableViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +85,7 @@
 		CAE17F97276E2F3300F3BBF8 /* PetsMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetsMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE17F9A276E2F3300F3BBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAE17F9C276E2F3300F3BBF8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CAE17F9E276E2F3300F3BBF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CAE17F9E276E2F3300F3BBF8 /* CheckIfLoggedInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIfLoggedInVC.swift; sourceTree = "<group>"; };
 		CAE17FA1276E2F3300F3BBF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAE17FA3276E2F3400F3BBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAE17FA6276E2F3400F3BBF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,9 +104,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA6DB3402786C22500E65203 /* FirebaseAuth in Frameworks */,
-				CA6DB3422786C22500E65203 /* FirebaseFirestore in Frameworks */,
-				CA6DB3452787080D00E65203 /* FirebaseStorage in Frameworks */,
+				CACDA75D279B7AED004DDA40 /* FirebaseAuth in Frameworks */,
+				CACDA75F279B7AED004DDA40 /* FirebaseFirestore in Frameworks */,
+				CACDA761279B7AED004DDA40 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,10 +231,18 @@
 		CA90D4F2277C481200544D83 /* ReadingList */ = {
 			isa = PBXGroup;
 			children = (
-				CA6D76832781DC2200DA1187 /* AddToReadingList.swift */,
+				CA6D76832781DC2200DA1187 /* ReadingList.swift */,
 				CA6D76852781E48F00DA1187 /* UserReadingListVC.swift */,
 			);
 			path = ReadingList;
+			sourceTree = "<group>";
+		};
+		CAC5DEF7279ACB3900B47B17 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CAC5DEF8279ACB5000B47B17 /* Home+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		CAD1EA38277741C900820426 /* BooksByCategoryList */ = {
@@ -306,6 +318,7 @@
 		CAE17F8E276E2F3300F3BBF8 = {
 			isa = PBXGroup;
 			children = (
+				CA9E95732798892300418D51 /* Dummy Data.swift */,
 				CAE17F99276E2F3300F3BBF8 /* PetsMe */,
 				CAE17F98276E2F3300F3BBF8 /* Products */,
 				CA6DB3432787080D00E65203 /* Frameworks */,
@@ -369,7 +382,7 @@
 				CAE17F9A276E2F3300F3BBF8 /* AppDelegate.swift */,
 				CA04AB24276F5E1300EF99F7 /* SplashClass.swift */,
 				CA04AB26276F5F4C00EF99F7 /* MainVC.swift */,
-				CAE17F9E276E2F3300F3BBF8 /* ViewController.swift */,
+				CAE17F9E276E2F3300F3BBF8 /* CheckIfLoggedInVC.swift */,
 				CAE17F9C276E2F3300F3BBF8 /* SceneDelegate.swift */,
 			);
 			path = Products;
@@ -386,6 +399,7 @@
 		CAE17FB4276E315D00F3BBF8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CAC5DEF7279ACB3900B47B17 /* Extension */,
 				CA4AADEF27793509004099E7 /* HomeVC */,
 				CA4AADF02779351B004099E7 /* Model */,
 				CA52DC022773B4A4006AFBAD /* Cell */,
@@ -445,9 +459,9 @@
 			);
 			name = PetsMe;
 			packageProductDependencies = (
-				CA6DB33F2786C22500E65203 /* FirebaseAuth */,
-				CA6DB3412786C22500E65203 /* FirebaseFirestore */,
-				CA6DB3442787080D00E65203 /* FirebaseStorage */,
+				CACDA75C279B7AED004DDA40 /* FirebaseAuth */,
+				CACDA75E279B7AED004DDA40 /* FirebaseFirestore */,
+				CACDA760279B7AED004DDA40 /* FirebaseStorage */,
 			);
 			productName = PetsMe;
 			productReference = CAE17F97276E2F3300F3BBF8 /* PetsMe.app */;
@@ -478,7 +492,7 @@
 			);
 			mainGroup = CAE17F8E276E2F3300F3BBF8;
 			packageReferences = (
-				CA6DB33E2786C22400E65203 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CACDA75B279B7AED004DDA40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CAE17F98276E2F3300F3BBF8 /* Products */;
 			projectDirPath = "";
@@ -516,7 +530,7 @@
 				CA52DC012773B469006AFBAD /* HomeViewController.swift in Sources */,
 				CAE17FCB276E33B600F3BBF8 /* UIColor.swift in Sources */,
 				CAAAEF8A277886A400B9ADDE /* Books.swift in Sources */,
-				CAE17F9F276E2F3300F3BBF8 /* ViewController.swift in Sources */,
+				CAE17F9F276E2F3300F3BBF8 /* CheckIfLoggedInVC.swift in Sources */,
 				CA52DBFF2773ACA1006AFBAD /* TermsAndServices.swift in Sources */,
 				CAE17FBF276E329000F3BBF8 /* LabelCell.swift in Sources */,
 				CA52DC0D2773B5E3006AFBAD /* ImageDetails.swift in Sources */,
@@ -532,7 +546,7 @@
 				CAD1EA3E2777442500820426 /* BooksListTableViewController.swift in Sources */,
 				CA6D76882782D0F800DA1187 /* PrefrencesVC.swift in Sources */,
 				CAAAEF90277886B600B9ADDE /* BookMangerDelegate.swift in Sources */,
-				CA6D76842781DC2200DA1187 /* AddToReadingList.swift in Sources */,
+				CA6D76842781DC2200DA1187 /* ReadingList.swift in Sources */,
 				CA90D4F0277B193100544D83 /* EndPoints.swift in Sources */,
 				CA1C7AEC2780D80000EFD58C /* BookContent+Exten.swift in Sources */,
 				CAAAEF8C277886AB00B9ADDE /* BookManager.swift in Sources */,
@@ -541,8 +555,10 @@
 				CA2AF48B277DEE0800BC6CD9 /* DisplayBookContentVC.swift in Sources */,
 				CAE17F9B276E2F3300F3BBF8 /* AppDelegate.swift in Sources */,
 				CA52DC062773B4C3006AFBAD /* BookOfTheDayCell.swift in Sources */,
+				CAC5DEF9279ACB5000B47B17 /* Home+Extension.swift in Sources */,
 				CA04AB21276F5D3600EF99F7 /* LogInViewController.swift in Sources */,
 				CAE17F9D276E2F3300F3BBF8 /* SceneDelegate.swift in Sources */,
+				CA9E95742798892300418D51 /* Dummy Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,7 +782,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CA6DB33E2786C22400E65203 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		CACDA75B279B7AED004DDA40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -777,19 +793,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CA6DB33F2786C22500E65203 /* FirebaseAuth */ = {
+		CACDA75C279B7AED004DDA40 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CA6DB33E2786C22400E65203 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CACDA75B279B7AED004DDA40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		CA6DB3412786C22500E65203 /* FirebaseFirestore */ = {
+		CACDA75E279B7AED004DDA40 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CA6DB33E2786C22400E65203 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CACDA75B279B7AED004DDA40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		CA6DB3442787080D00E65203 /* FirebaseStorage */ = {
+		CACDA760279B7AED004DDA40 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CA6DB33E2786C22400E65203 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CACDA75B279B7AED004DDA40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -20,7 +20,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
   var username: String = ""
   let db = Firestore.firestore()
   private let storage = Storage.storage().reference()
-
+  
   let user = Auth.auth().currentUser
   
   let storge = Storage.storage()
@@ -33,7 +33,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     view.backgroundColor = UIColor.cmOrange3
     view.layer.cornerRadius = 25
     view.isUserInteractionEnabled = true
-//    view.contentMode = .scaleAspectFill
+    //    view.contentMode = .scaleAspectFill
     
     return view
   }()
@@ -60,15 +60,15 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
   }(UILabel())
   
   
-//  let changeLanguage : UIButton = {
-//
-//    $0.translatesAutoresizingMaskIntoConstraints = false
-//    $0.layer.cornerRadius = 15
-//    $0.setTitle(NSLocalizedString("change", comment: ""), for: .normal)
-//    $0.setTitleColor( .black, for: .normal)
-//    $0.addTarget(self, action: #selector(btnChangeLangauge), for: .touchUpInside)
-//    return $0
-//  }(UIButton())
+  //  let changeLanguage : UIButton = {
+  //
+  //    $0.translatesAutoresizingMaskIntoConstraints = false
+  //    $0.layer.cornerRadius = 15
+  //    $0.setTitle(NSLocalizedString("change", comment: ""), for: .normal)
+  //    $0.setTitleColor( .black, for: .normal)
+  //    $0.addTarget(self, action: #selector(btnChangeLangauge), for: .touchUpInside)
+  //    return $0
+  //  }(UIButton())
   
   
   let shareApp : UIButton = {
@@ -86,7 +86,6 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
   
   var signOutButton : UIButton = {
     let signOutButton = UIButton()
-    //    signOutButton.backgroundColor = UIColor(red: 216/255, green: 198/255, blue: 174/255, alpha: 1)
     signOutButton.translatesAutoresizingMaskIntoConstraints = false
     signOutButton.layer.cornerRadius = 15
     signOutButton.tintColor = .white
@@ -94,7 +93,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     signOutButton.backgroundColor = .cmOrange3
     
     signOutButton.setTitle(NSLocalizedString("Sign Out", comment: ""), for: .normal)
-    //    signOutButton.addTarget(self, action: #selector(shareTheApp), for: .touchUpInside)
+    signOutButton.addTarget(self, action: #selector(signOut), for: .touchUpInside)
     
     return signOutButton
   }()
@@ -109,12 +108,10 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     UIGraphicsEndImageContext()
     
     let textToShare = "Check out my app"
-    //Enter the link app here
     if let myWebsite = URL(string: "http://itunes.apple.com/app/idXXXXXXXXX") {
       let objectsToShare = [textToShare, myWebsite, image ?? #imageLiteral(resourceName: "app-logo")] as [Any]
       let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
       
-      //Excluded Activities
       activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
       
       activityVC.popoverPresentationController?.sourceView = sender
@@ -131,7 +128,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     if UIApplication.shared.canOpenURL(settingsUrl) {
       UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-        print("Settings opened: \(success)")
+        //        print("Settings opened: \(success)")
       })
     }
   }
@@ -149,34 +146,35 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     let image = info[.editedImage] ?? info [.originalImage] as? UIImage ?? ""
-
+    
     
     dismiss(animated: true)
     
     picker.dismiss(animated: true, completion: nil)
     profileImage.image = image as? UIImage
     
-
+    
     guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
-        return
-    }//get byte from the data out of it
-    //we are not uploading the image we are uploading the bytes for that image
-      guard let imagData = image.pngData() else {
-       return
-      }
-      guard let currentUser = user else {return}
-      let imageName = currentUser.uid
-      storage.child("images/\(imageName).png").putData(imagData,
-                           metadata: nil,
-                           completion: { _, error in
-       guard error == nil else {
+      return
+    }
+    
+    guard let imagData = image.pngData() else {
+      return
+    }
+    guard let currentUser = user else {return}
+    let imageName = currentUser.uid
+    storage.child("images/\(imageName).png").putData(imagData,
+                                                     metadata: nil,
+                                                     completion: { _, error in
+      guard error == nil else {
         print ("Fieled")
         return
-       }
-       self.dismiss(animated: true, completion: nil)
-      })
+      }
+      self.dismiss(animated: true, completion: nil)
+    })
   }
-
+  
+  
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     name.resignFirstResponder()
     
@@ -188,12 +186,12 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.profileImage.contentMode = .scaleToFill
-
+    self.profileImage.contentMode = .scaleAspectFill
+    
     loadImage()
     loadUserInfo()
-
-  
+    
+    
     
     Utilities.styleUILabel(name)
     //          setupGradientView3()
@@ -230,14 +228,6 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
       
     ])
     
-//    view.addSubview(changeLanguage)
-//    NSLayoutConstraint.activate([
-//      changeLanguage.topAnchor.constraint(equalTo: view.topAnchor, constant: 540),
-//      changeLanguage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
-//      changeLanguage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80),
-//      changeLanguage.heightAnchor.constraint(equalToConstant: 40),
-//
-//    ])
     
     view.addSubview(shareApp)
     NSLayoutConstraint.activate([
@@ -269,40 +259,56 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     guard let currentUser = user else{return}
     let pathReference = storge.reference(withPath: "images/\(currentUser.uid).png")
     pathReference.getData(maxSize: 1000 * 1024 * 1024) { data, error in
-     if let error = error {
-      // Uh-oh, an error occurred!
-      print(error)
-     } else {
-      // Data for “images/island.jpg” is returned
-      let image = UIImage(data: data!)
-      self.profileImage.image = image
-     }
+      if let error = error {
+        // Uh-oh, an error occurred!
+        print(error)
+      } else {
+        // Data for “images/island.jpg” is returned
+        let image = UIImage(data: data!)
+        self.profileImage.image = image
+      }
     }
-   }
+  }
   
   func loadUserInfo(){
     
     
     let user = Auth.auth().currentUser
-    print(user?.uid as Any)
-      if let currentUser = user {
-       db.collection("users").document(currentUser.uid).getDocument { doc , err in
+    //    print(user?.uid as Any)
+    if let currentUser = user {
+      db.collection("users").document(currentUser.uid).getDocument { doc , err in
         if err != nil {
-         print(err!)
+          print(err!)
         }
         else{
-         let data = doc!.data()!
-         self.username = data["name"] as! String
-         print("\n\n* * * DATA : \(data)")
-         self.name.text = self.username
+          let data = doc!.data()!
+          self.username = data["name"] as! String
+          //         print("\n\n* * * DATA : \(data)")
+          self.name.text = self.username
         }
-       }
       }
+    }
   }
   
   @objc func imageTapped() {
-    print("Image Tapped")
+    //    print("Image Tapped")
     present(imagePicker, animated: true)
+  }
+  
+  
+  
+  @objc func signOut(){
+    do{
+      try Auth.auth().signOut()
+    } catch let logouterror {
+      print(logouterror)
+    }
+    print("\n\n\n\n************\(#function)\n\n\n")
+    
+    let vc = storyboard?.instantiateViewController(withIdentifier: "CheckIfLoggedInVC") as! CheckIfLoggedInVC
+    
+    vc.modalPresentationStyle = .fullScreen
+    present(vc,animated:false,completion: nil)
   }
 }
 
