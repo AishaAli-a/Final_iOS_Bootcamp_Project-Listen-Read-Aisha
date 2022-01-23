@@ -40,11 +40,20 @@ class Home: UIViewController{
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     let nib2 = UINib(nibName: reuseIdentifier2, bundle: nil)
     categoriesCollection.register(nib2, forCellWithReuseIdentifier: reuseIdentifier2)
     configureSize(numberOfHorizantalCells: 4, marginsBetweenCells: 20)
   }
   
+  @IBAction func continueReading_Pressed(_ sender: UIButton) {
+    
+
+    
+    let vc = storyboard?.instantiateViewController(withIdentifier: "UserReadingListVC") as! UserReadingListVC
+    self.navigationController!.pushViewController(vc, animated: true)
+    
+  }
   
   func readUserReadingList(){
 
@@ -89,6 +98,11 @@ class Home: UIViewController{
   }
   
   
+  override func loadView() {
+    super.loadView()
+    readUserInfo()
+    
+  }
   override func viewWillAppear(_ animated: Bool) {
     
     super.viewWillAppear(animated)
@@ -105,7 +119,8 @@ class Home: UIViewController{
       continuousReading.isHidden = false
       numberOFBooks.text = "\(books.count) Books in your reading list "
       randomimage = books.randomElement()?.coverBook
-      print("\n\n* * * Random : \(randomimage) * * * * * * * *\n\n")
+      print("\n\n* * * Random : \(String(describing: randomimage)) * * * * * * * *\n\n")
+      //THREADING
       DispatchQueue.main.async{
         let data = try? Data(contentsOf: URL(string: self.randomimage!)!)
         if let data = data, let image = UIImage(data: data) {

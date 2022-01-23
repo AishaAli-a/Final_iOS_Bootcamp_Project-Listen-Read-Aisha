@@ -972,10 +972,10 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="1004" height="350"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82n-Dz-r7o">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="482" height="350"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="787" height="350"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="History" translatesAutoresizingMaskIntoConstraints="NO" id="24Y-2h-hqf">
-                                                                                <rect key="frame" x="25" y="10" width="432" height="330"/>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="24Y-2h-hqf">
+                                                                                <rect key="frame" x="25" y="10" width="737" height="330"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
                                                                                 </userDefinedRuntimeAttributes>
@@ -990,13 +990,13 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-53" translatesAutoresizingMaskIntoConstraints="NO" id="P94-Q1-xbw">
-                                                                        <rect key="frame" x="494" y="0.0" width="510" height="350"/>
+                                                                        <rect key="frame" x="799" y="0.0" width="205" height="350"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1mu-Zt-WhI">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="510" height="201.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="205" height="201.5"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="You Have:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ri-MU-uPc">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="446" height="201.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="141" height="201.5"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" constant="120" id="PbC-d8-gGd"/>
                                                                                         </constraints>
@@ -1005,7 +1005,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs5-bI-6Te">
-                                                                                        <rect key="frame" x="451" y="0.0" width="59" height="201.5"/>
+                                                                                        <rect key="frame" x="146" y="0.0" width="59" height="201.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -1013,14 +1013,14 @@
                                                                                 </subviews>
                                                                             </stackView>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmW-Xc-MMl">
-                                                                                <rect key="frame" x="0.0" y="148.5" width="510" height="201.5"/>
+                                                                                <rect key="frame" x="0.0" y="148.5" width="205" height="201.5"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                                 <state key="normal" title="Continue Reading">
                                                                                     <color key="titleColor" red="0.92549019610000005" green="0.47450980390000003" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 </state>
                                                                                 <connections>
-                                                                                    <segue destination="J4C-35-erH" kind="show" id="art-oR-FDt"/>
+                                                                                    <action selector="continueReading_Pressed:" destination="PxB-bv-DcS" eventType="touchUpInside" id="YBK-Xy-eOW"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -1658,12 +1658,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGC-cf-0i0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2074" y="3210"/>
+            <point key="canvasLocation" x="-2094" y="3210"/>
         </scene>
         <!--User Reading ListVC-->
         <scene sceneID="haN-Da-rKr">
             <objects>
-                <tableViewController id="fR1-WC-6LT" customClass="UserReadingListVC" customModule="PetsMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UserReadingListVC" id="fR1-WC-6LT" customClass="UserReadingListVC" customModule="PetsMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="230" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="h1w-UU-xgz">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1706,7 +1706,7 @@
         <!--My Books-->
         <scene sceneID="3JY-hF-leJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J4C-35-erH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ReadingListNavigation" automaticallyAdjustsScrollViewInsets="NO" id="J4C-35-erH" customClass="ReadingListNavigation" customModule="PetsMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Books" image="list.bullet.rectangle.portrait" catalog="system" id="PrK-YX-R6B"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Jc7-WY-Zfc"/>
@@ -1725,7 +1725,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="art-oR-FDt"/>
         <segue reference="NNY-yp-CeS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96862745289999996" green="0.96470588450000005" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1733,7 +1732,6 @@
         <image name="1" width="2000" height="2000"/>
         <image name="2" width="2000" height="2000"/>
         <image name="Children" width="200" height="269"/>
-        <image name="History" width="432" height="691"/>
         <image name="dot" width="54" height="54"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="house" catalog="system" width="128" height="106"/>
