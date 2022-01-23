@@ -1212,7 +1212,7 @@
         <!--Book DetailsVC-->
         <scene sceneID="td3-IK-vzz">
             <objects>
-                <viewController storyboardIdentifier="BookInfoViewController" modalPresentationStyle="fullScreen" id="Vf4-vb-kU5" customClass="BookDetailsVC" customModule="PetsMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookInfoViewController" id="Vf4-vb-kU5" customClass="BookDetailsVC" customModule="PetsMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cxl-oU-bLr">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1716,7 +1716,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="fR1-WC-6LT" kind="relationship" relationship="rootViewController" id="Rlz-JK-Go6"/>
+                        <segue destination="fR1-WC-6LT" kind="relationship" relationship="rootViewController" id="R80-wK-rrs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyJ-6m-FCs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1725,7 +1725,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="70T-ZD-D9I"/>
+        <segue reference="art-oR-FDt"/>
         <segue reference="NNY-yp-CeS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96862745289999996" green="0.96470588450000005" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

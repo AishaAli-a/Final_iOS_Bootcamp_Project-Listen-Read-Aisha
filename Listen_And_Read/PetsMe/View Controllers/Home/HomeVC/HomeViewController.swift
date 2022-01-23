@@ -15,6 +15,8 @@ class Home: UIViewController{
 
   let db = Firestore.firestore()
   let id = Auth.auth().currentUser!.uid
+  var books:[ReadingList] = []
+
     
   var currentBook: String = ""
   var currentGenre: String = ""
@@ -47,7 +49,7 @@ class Home: UIViewController{
   func readUserReadingList(){
 
     let db = Firestore.firestore()
-    db.collection("users").document(id).collection("ReadingList").getDocuments{ Snapshot, error in
+    db.collection("users").document(id).collection("ReadingList").getDocuments{ [self] Snapshot, error in
       if error == nil {
         books.removeAll()
         guard let data = Snapshot?.documents else {return}
@@ -63,6 +65,7 @@ class Home: UIViewController{
           print(bookInfo.get("authorName")!)
         }
       }
+      self.bookAnimation()
     }
   }
   
@@ -92,9 +95,7 @@ class Home: UIViewController{
     navigationController?.navigationBar.isHidden = false
 
     readUserInfo()
-    bookAnimation()
     readUserReadingList()
-    
   }
 
   
@@ -118,7 +119,6 @@ class Home: UIViewController{
       }
     } else{
           continuousReading.isHidden = true
-
     }
   }
 }

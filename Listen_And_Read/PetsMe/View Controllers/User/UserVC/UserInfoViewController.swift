@@ -270,6 +270,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     }
   }
   
+  
   func loadUserInfo(){
     
     

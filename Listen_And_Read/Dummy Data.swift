@@ -49,5 +49,4 @@ let bookByCtegory = [
 
 
 
-var books:[ReadingList] = []
 
