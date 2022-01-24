@@ -110,11 +110,43 @@ class Home: UIViewController{
 
     readUserInfo()
     readUserReadingList()
-  }
+    self.bookImage.frame.origin.y += 25
 
+  }
   
+  
+  
+  
+//  func bookAnimation(){
+//
+//    if books.count != 0 {
+//      continuousReading.isHidden = false
+//      numberOFBooks.text = "\(books.count) Books in your reading list "
+//      randomimage = books.randomElement()?.coverBook
+//      print("\n\n* * * Random : \(String(describing: randomimage)) * * * * * * * *\n\n")
+//      //THREADING
+//      DispatchQueue.main.async{
+//        let data = try? Data(contentsOf: URL(string: self.randomimage!)!)
+//        if let data = data, let image = UIImage(data: data) {
+//          UIView.transition(with: self.uiView, duration: 0.10, options: .transitionCrossDissolve, animations: { self.bookImage.image = image }, completion: nil)
+////          UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
+//
+////            self.bookImage.image = image
+////            self.bookImage.frame.origin.y -= 25
+//
+////          })
+//        }
+//      }
+//    } else{
+//          continuousReading.isHidden = true
+//    }
+//  }
+//}
+
+
+
   func bookAnimation(){
-    
+
     if books.count != 0 {
       continuousReading.isHidden = false
       numberOFBooks.text = "\(books.count) Books in your reading list "
@@ -124,11 +156,12 @@ class Home: UIViewController{
       DispatchQueue.main.async{
         let data = try? Data(contentsOf: URL(string: self.randomimage!)!)
         if let data = data, let image = UIImage(data: data) {
+
           UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
-            
+
             self.bookImage.image = image
             self.bookImage.frame.origin.y -= 25
-            
+
           })
         }
       }
@@ -139,7 +172,11 @@ class Home: UIViewController{
 }
 
 
-
+//UIView.transition(with: imageView,
+//                  duration: 0.75,
+//                  options: .transitionCrossDissolve,
+//                  animations: { self.imageView.image = toImage },
+//                  completion: nil)
 
 
 
