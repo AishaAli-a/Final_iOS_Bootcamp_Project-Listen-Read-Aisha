@@ -21,6 +21,7 @@ extension Home: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     } else {
       return bookByCtegory.count
     }
+    
   }
   
   
@@ -30,20 +31,30 @@ extension Home: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
       
       let cellA = bookOfTheDayCollection.dequeueReusableCell(withReuseIdentifier: "BookOfTheDayCell", for: indexPath) as! BookOfTheDayCell
       
-      cellA.bookOfTheDayLabel.text = "\(bookOfTheDay[indexPath.row].bookTitle)"
+
+      
+      cellA.bookOfTheDayLabel.text = RecoBooks.randomElement()?.bookTitle
+      randomimage = RecoBooks.randomElement()?.coverBook
+      print("\n\n* * * I AM HERE AISHA : \(String(describing: randomimage)) * * * * * * * *\n\n")
+
+
+      
       
       cellA.bookOfTheDay_View.layer.cornerRadius = 20
       DispatchQueue.global().async{
-        let data = try? Data(contentsOf: URL(string: bookOfTheDay[indexPath.row].coverBook)!)
-        
-        if let data = data, let image = UIImage(data: data) {
-          DispatchQueue.main.async {
-            cellA.bookOfTheDayImage?.image = image
-            cellA.bookOfTheDayImage?.contentMode = .scaleToFill
-            
-          }
-        }
+//        let data = try? Data(contentsOf: URL(string: RecoBooks.randomElement()!.coverBook)!)
+//        
+//        if let data = data, let image = UIImage(data: data) {
+//          DispatchQueue.main.async {
+//            cellA.bookOfTheDayImage?.image = image
+//            cellA.bookOfTheDayImage?.contentMode = .scaleToFill
+//            
+//          }
+//        }
       }
+      
+      
+      
       return cellA
       
     } else {
@@ -97,31 +108,21 @@ extension Home: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
       
     } else {
       
-      currentBook = bookOfTheDay[indexPath.row].bookTitle
-      currentSummary = bookOfTheDay[indexPath.row].bookContent
-      currentImage = bookOfTheDay[indexPath.row].coverBook
-      currentAuthor = bookOfTheDay[indexPath.row].authorName
-      currentGenre = bookOfTheDay[indexPath.row].bookGenere
+      let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "BookInfoViewController") as! BookDetailsVC
+      
+      
+      destinationVC.bookTitle = bookOfTheDay[indexPath.row].bookTitle
+      destinationVC.bookContent = bookOfTheDay[indexPath.row].bookContent
+      destinationVC.cover  = bookOfTheDay[indexPath.row].coverBook
+      destinationVC.author = bookOfTheDay[indexPath.row].authorName
+      destinationVC.genre = bookOfTheDay[indexPath.row].bookGenere
+      print("# # # # # # # # # # ## # \(destinationVC.genre)# # #")
       
       performSegue(withIdentifier: "show_detail", sender: nil)
     }
   }
   
-  
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-    if let destinationVC = segue.destination as? BookDetailsVC {
-      destinationVC.bookTitle = currentBook
-      destinationVC.genre = currentGenre
-      destinationVC.cover = currentImage
-      destinationVC.author = currentAuthor
-      destinationVC.bookContent = currentSummary
-    }
-  }
-  
-  
-  
+  // MARK: - Cell LayOut
   func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
     

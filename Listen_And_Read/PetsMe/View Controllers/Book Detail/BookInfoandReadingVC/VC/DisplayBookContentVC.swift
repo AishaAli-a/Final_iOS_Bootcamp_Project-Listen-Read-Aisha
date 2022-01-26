@@ -15,12 +15,12 @@ var gender = "en-IE"
 
 class DisplayBookContentVC: UIViewController {
   
+  let textField = UITextField()
   
-  
-  private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: gender))
-  private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-  private var recognitionTask: SFSpeechRecognitionTask?
-  private let audioEngine = AVAudioEngine()
+  var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: gender))
+  var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+  var recognitionTask: SFSpeechRecognitionTask?
+  let audioEngine = AVAudioEngine()
   var timer1:Timer!
   //
   
@@ -40,18 +40,21 @@ class DisplayBookContentVC: UIViewController {
   
   
   
-  
+  // USER Start To Record and Give Command
   @IBOutlet weak var speechbutton: UIButton!
+  
+  // USER Start To Record and Give Command
   
   @IBOutlet weak var paly_Button: UIButton!
   
+  //Displaying book Content
   @IBOutlet weak var bookContent: UITextView!
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    bookContent.text = nil
+    //    bookContent.text = nil
     bookContent.isEditable = false
     speechRecognizer?.delegate = self
     synth.delegate = self
@@ -59,9 +62,9 @@ class DisplayBookContentVC: UIViewController {
     
   }
   
-  
-  
+  // Speech  Synth
   func buildUtterance(for rate: Float,for pitch: Float = 1.0, with str: String) -> AVSpeechUtterance {
+    
     let utterance = AVSpeechUtterance(string: str)
     utterance.rate = rate
     utterance.pitchMultiplier = pitch
@@ -74,7 +77,7 @@ class DisplayBookContentVC: UIViewController {
     
     if sender.tag == 0 {
       
-      self.synth.pauseSpeaking(at: AVSpeechBoundary.immediate)
+      //      self.synth.pauseSpeaking(at: AVSpeechBoundary.immediate)
       
       print("Button pressed")
       if audioEngine.isRunning {
@@ -90,6 +93,15 @@ class DisplayBookContentVC: UIViewController {
           speechbutton.setTitle("Recording Not Available", for: [])
         }
       }
+      
+      
+      
+      
+      
+      
+      
+      
+      
     }else if  synth.isPaused {
       print("*****Is continue\n\n ")
       paly_Button.setImage(pause, for: .normal)
@@ -105,7 +117,7 @@ class DisplayBookContentVC: UIViewController {
         
         if synth.isPaused {
           
-          print("*****Is continue\n\n ")
+          print("***** Is continue\n\n ")
           paly_Button.setImage(pause, for: .normal)
           synth.continueSpeaking()
           
@@ -116,9 +128,11 @@ class DisplayBookContentVC: UIViewController {
           synth.pauseSpeaking(at: AVSpeechBoundary.immediate)
         }
       }
-      //      print("****************\n**************\n\n\(gender)\n\n\n\n\n\n\n+++++++_________\n\n\n")
+      
       
     } else if sender.tag == 2 {
+      
+      
     }
   }
   
@@ -142,172 +156,20 @@ class DisplayBookContentVC: UIViewController {
   }
 }
 
-
-
-extension DisplayBookContentVC: AVSpeechSynthesizerDelegate {
-  
-  private func attributedString(from string: String, highlighting characterRange: NSRange) -> NSAttributedString {
+extension UITextField {
+  @discardableResult
+  func textIsContained(in target: String) -> Bool {
+    guard let text = self.text else { return false }
     
-    guard characterRange.location != NSNotFound else {
-      return NSAttributedString(string: string)
+    let isContained = target.contains(text)
+    if isContained {
+      print(" contains \(text)")
+      
+    } else {
+      print("- - - - - \n- - - - Not Contained")
     }
     
-    let mutableAttributedString = NSMutableAttributedString(string: string)
-    mutableAttributedString.addAttribute(.backgroundColor, value: UIColor.yellow, range: characterRange)
+    return isContained
     
-    return mutableAttributedString
-  }
-  
-  
-  
-  
-  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
-                         willSpeakRangeOfSpeechString characterRange: NSRange,
-                         utterance: AVSpeechUtterance) {
-    
-    self.bookContent.attributedText = attributedString(from: utterance.speechString, highlighting: characterRange)
-    bookContent.font = .systemFont(ofSize: 25)
-    bookContent.textAlignment = .center
-    bookContent.scrollRangeToVisible(makeCustomCharacterRange(from: characterRange))
-    currentRange = characterRange
-  }
-  
-  
-  private func makeCustomCharacterRange(from characterRange: NSRange) -> NSRange {
-    
-    return NSRange(location: characterRange.location + 300, length: characterRange.length)
-  }
-  
-  
-  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-    
-    self.bookContent.attributedText = NSAttributedString(string: utterance.speechString)
-  }
-  
-  
-  func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-    
-    self.bookContent.attributedText = NSAttributedString(string: utterance.speechString)
   }
 }
-
-
-
-
-
-extension DisplayBookContentVC: SFSpeechRecognizerDelegate{
-  
-  private func startRecording() throws {
-    
-    recognitionTask?.cancel()
-    self.recognitionTask = nil
-    
-    let audioSession = AVAudioSession.sharedInstance()
-    try audioSession.setCategory(.playAndRecord, mode: .measurement, options: .duckOthers)
-    try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-    let inputNode = audioEngine.inputNode
-    
-    recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-    guard let recognitionRequest = recognitionRequest else { fatalError("Unable to create a SFSpeechAudioBufferRecognitionRequest object") }
-    recognitionRequest.shouldReportPartialResults = true
-    
-    if #available(iOS 13, *) {
-      recognitionRequest.requiresOnDeviceRecognition = false
-    }
-    
-    recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest) { result, error in
-      
-      var isFinal = false
-      isFinal = false
-      if let result = result {
-        self.singleMessageString = self.fullMessageString
-        isFinal = result.isFinal
-        let word = result.bestTranscription.formattedString
-        self.fullMessageString = word
-        let lastWord = self.fullMessageString.replacingOccurrences(of: self.singleMessageString, with: "")
-        
-        
-        
-        //MARK: - calling Type of Functions depending on speech
-        if (lastWord.contains("start") || lastWord.contains("Start")){
-          self.synth.speak(self.buildUtterance(for: AVSpeechUtteranceDefaultSpeechRate, with: self.bookContent.text!))
-          //          self.stopRecording()
-          
-        }
-        
-        if (lastWord.contains("stop") || lastWord.contains("Stop")){
-          self.synth.stopSpeaking(at: .immediate)
-          self.stopRecording()
-          
-        }
-        
-        if (lastWord.contains("pause") || lastWord.contains("pause")){
-          self.synth.pauseSpeaking(at: AVSpeechBoundary.immediate)
-          //          self.stopRecording()
-        }
-        
-        if (lastWord.contains("continue") || lastWord.contains("Continue")){
-          self.synth.continueSpeaking()
-          //          self.stopRecording()
-        }
-        
-        if (lastWord.contains("Man") || lastWord.contains("man")){
-          self.synth.stopSpeaking(at: .immediate)
-          gender = "en-gb"
-          self.synth.speak(self.buildUtterance(for: AVSpeechUtteranceDefaultSpeechRate, with: self.bookContent.text!))
-          //          Voice().read(text: "your default have been changed")
-        }
-        else if (lastWord.contains("women") || lastWord.contains("Women")){
-          gender = "en-IE"
-          self.synth.stopSpeaking(at: .immediate)
-          self.synth.speak(self.buildUtterance(for: AVSpeechUtteranceDefaultSpeechRate, with: self.bookContent.text!))
-          
-        }
-      }
-      
-      
-      //MARK: - StopRecording
-      if isFinal {
-        self.audioEngine.stop()
-        inputNode.removeTap(onBus: 0)
-        
-        self.recognitionRequest = nil
-        self.recognitionTask = nil
-        
-        self.speechbutton.isEnabled = true
-      }else if error == nil || isFinal {
-        self.stopRecording()
-      }
-    }
-    
-    // Configure the microphone input.
-    let recordingFormat = inputNode.outputFormat(forBus: 0)
-    inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
-      self.recognitionRequest?.append(buffer)
-    }
-    audioEngine.prepare()
-    try audioEngine.start()
-  }
-  
-  
-  func stopRecording() {
-    
-    timer1?.invalidate()
-    timer1 = Timer.scheduledTimer(withTimeInterval:1, repeats: false, block: {
-      (timer) in
-      self.audioEngine.stop()
-      self.audioEngine.inputNode.removeTap(onBus: 0)
-      
-      self.recognitionRequest = nil
-      self.recognitionTask = nil
-      
-      self.speechbutton.isEnabled = true
-    })
-  }
-}
-
-
-
-
-
-

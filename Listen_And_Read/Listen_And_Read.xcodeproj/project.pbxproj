@@ -12,9 +12,9 @@
 		CA04AB27276F5F4C00EF99F7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04AB26276F5F4C00EF99F7 /* MainVC.swift */; };
 		CA04AB29276F601700EF99F7 /* CustomLabel Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04AB28276F601700EF99F7 /* CustomLabel Class.swift */; };
 		CA1BDAB02779ACB300ADD8B6 /* BookDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1BDAAF2779ACB300ADD8B6 /* BookDetailsVC.swift */; };
-		CA1C7AEC2780D80000EFD58C /* BookContent+Exten.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1C7AEB2780D80000EFD58C /* BookContent+Exten.swift */; };
+		CA1C7AEC2780D80000EFD58C /* AVSpeechSynthesizer+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1C7AEB2780D80000EFD58C /* AVSpeechSynthesizer+EXT.swift */; };
 		CA2AF48B277DEE0800BC6CD9 /* DisplayBookContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AF48A277DEE0800BC6CD9 /* DisplayBookContentVC.swift */; };
-		CA4261E6279E1C3C006E62D5 /* ReadingListNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4261E5279E1C3C006E62D5 /* ReadingListNavigation.swift */; };
+		CA4261E827A05437006E62D5 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4261E727A05437006E62D5 /* SpeechRecognizer.swift */; };
 		CA52DBFA2773AC20006AFBAD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52DBF92773AC20006AFBAD /* SignUpViewController.swift */; };
 		CA52DBFC2773AC7C006AFBAD /* CustomeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52DBFB2773AC7C006AFBAD /* CustomeStyle.swift */; };
 		CA52DBFF2773ACA1006AFBAD /* TermsAndServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52DBFE2773ACA1006AFBAD /* TermsAndServices.swift */; };
@@ -60,9 +60,9 @@
 		CA04AB26276F5F4C00EF99F7 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		CA04AB28276F601700EF99F7 /* CustomLabel Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomLabel Class.swift"; sourceTree = "<group>"; };
 		CA1BDAAF2779ACB300ADD8B6 /* BookDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsVC.swift; sourceTree = "<group>"; };
-		CA1C7AEB2780D80000EFD58C /* BookContent+Exten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookContent+Exten.swift"; sourceTree = "<group>"; };
+		CA1C7AEB2780D80000EFD58C /* AVSpeechSynthesizer+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVSpeechSynthesizer+EXT.swift"; sourceTree = "<group>"; };
 		CA2AF48A277DEE0800BC6CD9 /* DisplayBookContentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayBookContentVC.swift; sourceTree = "<group>"; };
-		CA4261E5279E1C3C006E62D5 /* ReadingListNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListNavigation.swift; sourceTree = "<group>"; };
+		CA4261E727A05437006E62D5 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		CA52DBF92773AC20006AFBAD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CA52DBFB2773AC7C006AFBAD /* CustomeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomeStyle.swift; sourceTree = "<group>"; };
 		CA52DBFE2773ACA1006AFBAD /* TermsAndServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndServices.swift; sourceTree = "<group>"; };
@@ -153,17 +153,10 @@
 		CA2AF487277DE77D00BC6CD9 /* Reading+Exte */ = {
 			isa = PBXGroup;
 			children = (
-				CA1C7AEB2780D80000EFD58C /* BookContent+Exten.swift */,
+				CA1C7AEB2780D80000EFD58C /* AVSpeechSynthesizer+EXT.swift */,
+				CA4261E727A05437006E62D5 /* SpeechRecognizer.swift */,
 			);
 			path = "Reading+Exte";
-			sourceTree = "<group>";
-		};
-		CA4261E3279E1C10006E62D5 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				CA4261E5279E1C3C006E62D5 /* ReadingListNavigation.swift */,
-			);
-			path = Navigation;
 			sourceTree = "<group>";
 		};
 		CA4AADEF27793509004099E7 /* HomeVC */ = {
@@ -372,7 +365,6 @@
 		CAE17FAF276E30B100F3BBF8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CA4261E3279E1C10006E62D5 /* Navigation */,
 				CAD3601C2785761300852176 /* Book of the Day  */,
 				CA90D4F2277C481200544D83 /* ReadingList */,
 				CA1BDAAD2779A82F00ADD8B6 /* Book Detail */,
@@ -559,8 +551,8 @@
 				CAAAEF90277886B600B9ADDE /* BookMangerDelegate.swift in Sources */,
 				CA6D76842781DC2200DA1187 /* ReadingList.swift in Sources */,
 				CA90D4F0277B193100544D83 /* EndPoints.swift in Sources */,
-				CA4261E6279E1C3C006E62D5 /* ReadingListNavigation.swift in Sources */,
-				CA1C7AEC2780D80000EFD58C /* BookContent+Exten.swift in Sources */,
+				CA1C7AEC2780D80000EFD58C /* AVSpeechSynthesizer+EXT.swift in Sources */,
+				CA4261E827A05437006E62D5 /* SpeechRecognizer.swift in Sources */,
 				CAAAEF8C277886AB00B9ADDE /* BookManager.swift in Sources */,
 				CA04AB27276F5F4C00EF99F7 /* MainVC.swift in Sources */,
 				CA04AB25276F5E1300EF99F7 /* SplashClass.swift in Sources */,
