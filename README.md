@@ -26,3 +26,18 @@ Anyone interested in reading novels with a voice in off.
    - The books in "My library" section indicates if they are already donwloaded or not. They can be downlodaded from the Listen&Read bookstore.
    - Books can be read from iPhone or iPad devices.
    - Set up of different voices sythesised by men or women with different local accents.
+
+
+## ScreenShots
+   <img src="https://user-images.githubusercontent.com/88169750/151823338-1395b711-6970-454b-ae50-eb937456916d.png" alt="1L" width="200" height="400">   <img src="https://user-images.githubusercontent.com/88169750/151823652-e47bea9b-4f30-4a61-ad8c-5889242d4cd1.png" alt="1L" width="200" height="400">   <img src="https://user-images.githubusercontent.com/88169750/151823676-78fa7a9e-26ea-4223-922f-775036a879ef.png" alt="1L" width="200" height="400">   <img src="https://user-images.githubusercontent.com/88169750/151823652-e47bea9b-4f30-4a61-ad8c-5889242d4cd1.png" alt="1L" width="200" height="400">      <img src="https://user-images.githubusercontent.com/88169750/151823732-ba38a6ad-e444-44cf-aa16-2c5c61704609.png" alt="1L" width="200" height="400">      <img src="https://user-images.githubusercontent.com/88169750/151823707-9ada32c2-ae8b-426d-a8ad-bcda5cb99008.png" alt="1L" width="200" height="400">
+
+
+
+
+ 
+
+
+
+   
+
+
