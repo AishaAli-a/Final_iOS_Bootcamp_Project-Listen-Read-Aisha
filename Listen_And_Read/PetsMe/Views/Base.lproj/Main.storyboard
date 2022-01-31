@@ -1491,12 +1491,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="D4D-Gp-Ac7">
                                         <rect key="frame" x="53.5" y="15.5" width="300" height="453"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Command" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9es-t3-zbL">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9es-t3-zbL">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="300" id="2ON-9N-ZU1"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <color key="textColor" red="0.92549019610000005" green="0.47450980390000003" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1552,9 +1552,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <color key="backgroundColor" name="Dark Mode Color"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96862745289999996" green="0.96470588450000005" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="Dark Mode Color"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="D4D-Gp-Ac7" secondAttribute="trailing" constant="53.5" id="1mn-oJ-beY"/>
                                     <constraint firstItem="D4D-Gp-Ac7" firstAttribute="leading" secondItem="KY6-4m-G1X" secondAttribute="leading" constant="53.5" id="hg3-0U-nOj"/>

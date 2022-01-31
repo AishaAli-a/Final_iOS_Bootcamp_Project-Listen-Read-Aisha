@@ -25,7 +25,7 @@ var gender = "en-IE"
 
 
 let bookOfTheDay = [
-  ReadingList(coverBook: "http://www.gutenberg.org/cache/epub/74/pg74.cover.medium.jpg", authorName: "Mark Twain", bookTitle: "The Adventures of Tom Sawyer", bookGenere: "Fiction", bookContent: "http://www.gutenberg.org/files/74/74-0.txt", bookId: ""),
+  ReadingList(coverBook: "http://www.gutenberg.org/cache/epub/74/pg74.cover.medium.jpg", authorName: "Mark Twain", bookTitle: "The Adventures of Tom Sawyer", bookGenere: "Fiction", bookContent: "https://www.gutenberg.org/files/1200/1200-0.txt", bookId: ""),
   
   ReadingList(coverBook: "http://www.gutenberg.org/cache/epub/76/pg76.cover.medium.jpg", authorName: "Mark Twain", bookTitle: "Adventures of Huckleberry Finn", bookGenere: "Fiction", bookContent: "http://www.gutenberg.org/files/76/76-0.txt", bookId: ""),
   
