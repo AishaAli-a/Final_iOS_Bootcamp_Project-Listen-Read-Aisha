@@ -42,6 +42,7 @@ class BookDetailsVC: UIViewController {
     bookTitle_Label.text = bookTitle
     bookGenre_Label.text = genre
     bookAuthor_Label.text = author
+
     
     print("~~ \(self.bookContent)")
     
@@ -63,6 +64,7 @@ class BookDetailsVC: UIViewController {
       print("* * * PHOTO NOT FOUND * * * ")
     }
   }
+
   
   
   @IBAction func button_Pressed(_ sender: UIButton) {

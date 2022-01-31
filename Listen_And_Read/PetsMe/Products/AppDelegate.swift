@@ -15,9 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
 
 
     UITabBar.appearance().tintColor = .cmOrange3
+    UINavigationBar.appearance().tintColor = .cmOrange3
     FirebaseApp.configure()
 
 
@@ -25,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     return true
   }
+
 
   // MARK: UISceneSession Lifecycle
 

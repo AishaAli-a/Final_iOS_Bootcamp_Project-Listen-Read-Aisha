@@ -21,6 +21,8 @@ extension UIViewController{
   
 }
 
+var gender = "en-IE"
+
 
 let bookOfTheDay = [
   ReadingList(coverBook: "http://www.gutenberg.org/cache/epub/74/pg74.cover.medium.jpg", authorName: "Mark Twain", bookTitle: "The Adventures of Tom Sawyer", bookGenere: "Fiction", bookContent: "http://www.gutenberg.org/files/74/74-0.txt", bookId: ""),

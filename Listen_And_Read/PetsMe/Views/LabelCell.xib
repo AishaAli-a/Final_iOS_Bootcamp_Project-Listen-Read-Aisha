@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,7 +50,7 @@
                                             <constraint firstAttribute="height" constant="26.5" id="gdc-uf-zo5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="TextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -87,5 +88,8 @@
     </objects>
     <resources>
         <image name="Fantasy" width="1074" height="1725"/>
+        <namedColor name="TextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

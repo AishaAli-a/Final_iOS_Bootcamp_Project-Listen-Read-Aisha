@@ -8,9 +8,6 @@
 import UIKit
 import AVFoundation
 
-enum ButtonType: Int {
-    case slow = 0, fast, highPitch, lowPitch, echo, reverb
-}
 
 
 extension DisplayBookContentVC: AVSpeechSynthesizerDelegate {
@@ -22,7 +19,7 @@ extension DisplayBookContentVC: AVSpeechSynthesizerDelegate {
     }
     
     let mutableAttributedString = NSMutableAttributedString(string: string)
-    mutableAttributedString.addAttribute(.backgroundColor, value: UIColor.yellow, range: characterRange)
+    mutableAttributedString.addAttribute(.backgroundColor, value: UIColor.cmOrange3, range: characterRange)
     
     return mutableAttributedString
   }
@@ -36,6 +33,7 @@ extension DisplayBookContentVC: AVSpeechSynthesizerDelegate {
     
     self.bookContent.attributedText = attributedString(from: utterance.speechString, highlighting: characterRange)
     bookContent.font = .systemFont(ofSize: 25)
+    bookContent.textColor = UIColor(named: "TextColor")
     bookContent.textAlignment = .center
     bookContent.scrollRangeToVisible(makeCustomCharacterRange(from: characterRange))
     currentRange = characterRange

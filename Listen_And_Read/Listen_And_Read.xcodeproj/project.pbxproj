@@ -136,7 +136,6 @@
 			children = (
 				CAD3601B27856F1600852176 /* Speech  */,
 				CA1BDAAE2779A84000ADD8B6 /* BookInfoandReadingVC */,
-				CA2AF487277DE77D00BC6CD9 /* Reading+Exte */,
 				CA6D76892782D0FF00DA1187 /* ListenPrefrences */,
 			);
 			path = "Book Detail";
@@ -148,15 +147,6 @@
 				CAD3601A27856EDD00852176 /* VC */,
 			);
 			path = BookInfoandReadingVC;
-			sourceTree = "<group>";
-		};
-		CA2AF487277DE77D00BC6CD9 /* Reading+Exte */ = {
-			isa = PBXGroup;
-			children = (
-				CA1C7AEB2780D80000EFD58C /* AVSpeechSynthesizer+EXT.swift */,
-				CA4261E727A05437006E62D5 /* SpeechRecognizer.swift */,
-			);
-			path = "Reading+Exte";
 			sourceTree = "<group>";
 		};
 		CA4AADEF27793509004099E7 /* HomeVC */ = {
@@ -299,6 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				CAD3601E2785B83D00852176 /* Voice.swift */,
+				CA1C7AEB2780D80000EFD58C /* AVSpeechSynthesizer+EXT.swift */,
+				CA4261E727A05437006E62D5 /* SpeechRecognizer.swift */,
 			);
 			path = "Speech ";
 			sourceTree = "<group>";
@@ -321,7 +313,6 @@
 		CAE17F8E276E2F3300F3BBF8 = {
 			isa = PBXGroup;
 			children = (
-				CA9E95732798892300418D51 /* Dummy Data.swift */,
 				CAE17F99276E2F3300F3BBF8 /* PetsMe */,
 				CAE17F98276E2F3300F3BBF8 /* Products */,
 				CA6DB3432787080D00E65203 /* Frameworks */,
@@ -382,6 +373,7 @@
 		CAE17FB0276E30C200F3BBF8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				CA9E95732798892300418D51 /* Dummy Data.swift */,
 				CAE17F9A276E2F3300F3BBF8 /* AppDelegate.swift */,
 				CA04AB24276F5E1300EF99F7 /* SplashClass.swift */,
 				CA04AB26276F5F4C00EF99F7 /* MainVC.swift */,

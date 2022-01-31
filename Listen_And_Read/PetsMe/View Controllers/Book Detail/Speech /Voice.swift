@@ -20,6 +20,4 @@ class Voice {
       synthesizer.speak(utterance)
     }
   }
-  
-  
 }

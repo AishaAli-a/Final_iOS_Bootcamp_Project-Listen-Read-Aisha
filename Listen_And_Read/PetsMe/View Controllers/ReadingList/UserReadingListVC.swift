@@ -31,9 +31,7 @@ class UserReadingListVC: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    self.view.backgroundColor = .cmWhite
-    
+      
     let nib2 = UINib(nibName: reuseIdentifier4, bundle: nil)
     
     tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier4)

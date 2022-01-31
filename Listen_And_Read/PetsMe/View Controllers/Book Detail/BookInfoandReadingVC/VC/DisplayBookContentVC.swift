@@ -11,7 +11,6 @@ import UIKit
 import Speech
 
 
-var gender = "en-IE"
 
 class DisplayBookContentVC: UIViewController {
   
@@ -58,8 +57,12 @@ class DisplayBookContentVC: UIViewController {
     bookContent.isEditable = false
     speechRecognizer?.delegate = self
     synth.delegate = self
-    
-    
+  }
+  
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    self.synth.stopSpeaking(at: .immediate)
+
   }
   
   // Speech  Synth

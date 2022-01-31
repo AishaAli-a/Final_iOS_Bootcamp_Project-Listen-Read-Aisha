@@ -47,8 +47,8 @@ extension DisplayBookContentVC: SFSpeechRecognizerDelegate{
         // هنا ايش سويت !!!!!!!!!!!!!!!!!!!!
         let lastWord = self.fullMessageString.replacingOccurrences(of: self.singleMessageString, with: "")
         print("\n\n\n\n\n\n- - - - - - LAST WORD :\(lastWord)")
-        print("\n\n\n\n\n\n- - - - - -word :\(word)")
-        print("\n\n\n\n\n\n- - - - - -result :\(result)")
+//        print("\n\n\n\n\n\n- - - - - -word :\(word)")
+//        print("\n\n\n\n\n\n- - - - - -result :\(result)")
 
 
         
@@ -67,7 +67,7 @@ extension DisplayBookContentVC: SFSpeechRecognizerDelegate{
           
         }
         
-        if (lastWord.contains("pause") || lastWord.contains("pause")){
+        if (lastWord.contains("pause") || lastWord.contains("Pause")){
           self.synth.pauseSpeaking(at: AVSpeechBoundary.immediate)
           //          self.stopRecording()
         }
@@ -77,13 +77,13 @@ extension DisplayBookContentVC: SFSpeechRecognizerDelegate{
           //          self.stopRecording()
         }
         
-        if (lastWord.contains("Man") || lastWord.contains("man")){
+        if (lastWord.contains("Male") || lastWord.contains("Mail")){
           self.synth.stopSpeaking(at: .immediate)
           gender = "en-gb"
           self.synth.speak(self.buildUtterance(for: AVSpeechUtteranceDefaultSpeechRate, with: self.bookContent.text!))
           //          Voice().read(text: "your default have been changed")
         }
-        else if (lastWord.contains("women") || lastWord.contains("Women")){
+        else if (lastWord.contains("Female") || lastWord.contains("female")){
           gender = "en-IE"
           self.synth.stopSpeaking(at: .immediate)
           self.synth.speak(self.buildUtterance(for: AVSpeechUtteranceDefaultSpeechRate, with: self.bookContent.text!))
@@ -91,7 +91,7 @@ extension DisplayBookContentVC: SFSpeechRecognizerDelegate{
           
           // Search should be here
           
-          
+          //TODO: -
         } else if (lastWord.contains("Search") || lastWord.contains("search")){
 
         }

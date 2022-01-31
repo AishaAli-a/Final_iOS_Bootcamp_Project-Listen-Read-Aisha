@@ -18,7 +18,6 @@ class Home: UIViewController{
   let id = Auth.auth().currentUser!.uid
   var books:[ReadingList] = []
   
-  
   var currentBook: String = ""
   var currentGenre: String = ""
   var currentAuthor: String = ""

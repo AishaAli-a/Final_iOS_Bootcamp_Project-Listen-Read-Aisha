@@ -17,7 +17,7 @@ extension UIColor {
   static let cmBlack = UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1)
   static let cmOrange1 = UIColor(red: 205.0/255.0, green: 93.0/255.0, blue: 71.0/255.0, alpha: 1)
   static let cmOrange2 = UIColor(red: 255.0/255.0, green: 88.0/255.0, blue: 41.0/255.0, alpha: 1)
-  static let cmOrange3 = UIColor(red: 236.0/255.0, green: 121.0/255.0, blue: 100.0/255.0, alpha: 1)
+  static let cmOrange3 = UIColor(red: 236.0/255.0, green: 121.0/255.0, blue: 100.0/255.0, alpha: 1.1)
   static let cmWhite = UIColor(red: 247.0/255.0, green: 246.0/255.0, blue: 244.0/255.0, alpha: 1)
   static let cmBlue1 = UIColor(red: 61.0/255.0, green: 126.0/255.0, blue: 139/255.0, alpha: 1)
   static let cmBlue2 = UIColor(red: 54.0/255.0, green: 88.0/255.0, blue: 140.0/255.0, alpha: 1)

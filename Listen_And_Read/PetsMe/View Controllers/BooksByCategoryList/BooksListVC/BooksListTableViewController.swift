@@ -40,7 +40,7 @@ class BooksListTableViewController: UITableViewController, BookMangerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.view.backgroundColor = .cmWhite
+//    self.view.backgroundColor = .cmWhite
     searchBar.delegate = self
     searchBar.placeholder = "Search Books"
     
@@ -131,7 +131,7 @@ extension BooksListTableViewController{
   
   func showSpinner(onView : UIView) {
     let spinnerView = UIView.init(frame: onView.bounds)
-    spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+//    spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
     let ai = UIActivityIndicatorView.init(style:.large )
     ai.startAnimating()
     ai.center = spinnerView.center
@@ -163,17 +163,8 @@ extension BooksListTableViewController : UISearchBarDelegate {
     fetchMore = true
     booksData.removeAll()
     self.searchBar.endEditing(true)
-    self.searchBar.layer.borderColor = UIColor.clear.cgColor
     self.showSpinner(onView: self.view)
   }
-  
-  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-    self.searchBar.layer.borderColor = UIColor.cmWhite.cgColor
-    self.searchBar.layer.borderWidth = 6
-    
-  }
-  
-  
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     readReadingList()

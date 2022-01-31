@@ -33,24 +33,24 @@ extension Home: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
       
 
       
-      cellA.bookOfTheDayLabel.text = RecoBooks.randomElement()?.bookTitle
-      randomimage = RecoBooks.randomElement()?.coverBook
+      cellA.bookOfTheDayLabel.text = bookOfTheDay[indexPath.row].bookTitle
+      randomimage = bookOfTheDay[indexPath.row].coverBook
       print("\n\n* * * I AM HERE AISHA : \(String(describing: randomimage)) * * * * * * * *\n\n")
 
 
       
       
       cellA.bookOfTheDay_View.layer.cornerRadius = 20
-      DispatchQueue.global().async{
-//        let data = try? Data(contentsOf: URL(string: RecoBooks.randomElement()!.coverBook)!)
-//        
-//        if let data = data, let image = UIImage(data: data) {
-//          DispatchQueue.main.async {
-//            cellA.bookOfTheDayImage?.image = image
-//            cellA.bookOfTheDayImage?.contentMode = .scaleToFill
-//            
-//          }
-//        }
+      DispatchQueue.global().async{ [self] in
+        let data = try? Data(contentsOf: URL(string:randomimage!)!)
+        
+        if let data = data, let image = UIImage(data: data) {
+          DispatchQueue.main.async {
+            cellA.bookOfTheDayImage?.image = image
+            cellA.bookOfTheDayImage?.contentMode = .scaleToFill
+            
+          }
+        }
       }
       
       
@@ -106,21 +106,31 @@ extension Home: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
       self.navigationController?.pushViewController(secondViewController, animated: true)
       
       
-    } else {
+    } else if collectionView == bookOfTheDayCollection  {
+      
+      currentBook = bookOfTheDay[indexPath.row].bookTitle
+      currentSummary = bookOfTheDay[indexPath.row].bookContent
+      currentImage = bookOfTheDay[indexPath.row].coverBook
+      currentAuthor = bookOfTheDay[indexPath.row].authorName
+      currentGenre = bookOfTheDay[indexPath.row].bookGenere
       
       let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "BookInfoViewController") as! BookDetailsVC
+      destinationVC.bookTitle = currentBook
+      destinationVC.genre =  currentGenre
+      destinationVC.cover = currentImage
+      destinationVC.author = currentAuthor
+      destinationVC.bookContent = currentSummary
       
+      self.navigationController?.pushViewController(destinationVC, animated: true)
+
+
+      print("\n# # # # # # # didSelectItemAt# # # ## # \(currentImage)\n- - - \(destinationVC.cover)# # #")
       
-      destinationVC.bookTitle = bookOfTheDay[indexPath.row].bookTitle
-      destinationVC.bookContent = bookOfTheDay[indexPath.row].bookContent
-      destinationVC.cover  = bookOfTheDay[indexPath.row].coverBook
-      destinationVC.author = bookOfTheDay[indexPath.row].authorName
-      destinationVC.genre = bookOfTheDay[indexPath.row].bookGenere
-      print("# # # # # # # # # # ## # \(destinationVC.genre)# # #")
-      
-      performSegue(withIdentifier: "show_detail", sender: nil)
+//      performSegue(withIdentifier: "didSelectItemAt", sender: self)
     }
   }
+
+  
   
   // MARK: - Cell LayOut
   func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
